@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Begin From Within</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+        }
+        
+        .contact-form button {
+            padding: 12px;
+            background-color: #9b8557;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-form button:hover {
+            background-color: #7d6b46;
+        }
+        
+        .contact-info .icon {
+            color: #9b8557;
+            margin-right: 10px;
+            width: 20px;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .contact-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">Begin From Within</a>
+        </div>
+        <nav>
+            <div class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="auth-nav">
+                <a href="#" class="sign-in">Sign In</a>
+                <a href="#" class="create-account">Create Account</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Create Account</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section>
+            <h2>Contact Us</h2>
+            <hr>
+            <p class="text-center">We're here to assist you on your journey. Reach out with any questions.</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h4>Get In Touch</h4>
+                    <div class="contact-item">
+                        <span class="icon"><i class="fas fa-envelope"></i></span>
+                        <span>BeginFromWithin@msn.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon"><i class="fas fa-phone"></i></span>
+                        <span>520.403.8210</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon"><i class="fas fa-clock"></i></span>
+                        <span>
+                            Available:<br>
+                            Monday - Friday: 9am - 5pm<br>
+                            Saturday: 10am - 2pm<br>
+                            Sunday: Closed
+                        </span>
+                    </div>
+                    
+                    <h4 style="margin-top: 30px;">About Your Journey</h4>
+                    <p>
+                        Whether you're just starting to explore the Journey to the Self or looking to deepen your practice, we're here to support you. Contact us with any questions about our services or to schedule your first consultation.
+                    </p>
+                </div>
+                
+                <div class="contact-form">
+                    <h4>Send a Message</h4>
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject">
+                        <textarea placeholder="Your Message"></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright © 2020 BeginFromWithin - All Rights Reserved.</p>
+        <p>Powered by GoDaddy Website Builder</p>
+    </footer>
+
+    <div class="login-modal">
+        <div class="login-content">
+            <span class="close">&times;</span>
+            <h2>Sign In</h2>
+            <form>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message. In a real implementation, this would be sent to our server.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
