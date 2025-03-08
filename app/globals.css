@@ -318,4 +318,104 @@ a:hover {
 
 .meditation-ripple {
   animation: meditationRipple 4s infinite ease-out;
+}
+
+/* Journey Deeper Parallax Effects */
+.journey-depth-element {
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(1px); /* Add slight blur to make elements more ethereal */
+}
+
+.journey-section {
+  transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+  opacity: 0.95; /* Increased from 0.85 to ensure text is more readable */
+}
+
+.journey-section:hover {
+  opacity: 1;
+}
+
+@keyframes floatDeeper {
+  0% {
+    transform: translateY(10px); /* Reduced from 20px to 10px for subtler animation */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.float-deeper {
+  animation: floatDeeper 1.2s ease-out forwards;
+  animation-delay: calc(var(--index) * 0.15s); /* Reduced from 0.2s to 0.15s */
+}
+
+/* Depth illusion effect - elements appear to move as if getting deeper within */
+@keyframes depthReveal {
+  0% {
+    transform: scale(0.9); /* Increased from 0.85 to 0.9 for subtler animation */
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.depth-reveal {
+  animation: depthReveal 1.2s ease-out forwards;
+}
+
+/* Text shadow for improved readability with parallax effects */
+.text-shadow {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.dark .text-shadow {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Swirling background effects */
+@keyframes swirl {
+  0% {
+    transform: rotate(0deg) translateX(20px) rotate(0deg) scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: rotate(180deg) translateX(20px) rotate(-180deg) scale(1.1);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: rotate(360deg) translateX(20px) rotate(-360deg) scale(1);
+    filter: brightness(1);
+  }
+}
+
+.swirl-particle {
+  animation: swirl 12s infinite linear;
+  transform-origin: center center;
+  filter: blur(0px) drop-shadow(0 0 5px rgba(155, 133, 87, 0.8));
+}
+
+/* Content sections should have a subtle background to ensure readability */
+.journey-section .prose {
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* For users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .swirl-particle {
+    animation: none;
+  }
+  
+  .journey-depth-element,
+  .journey-section {
+    transition: none !important;
+  }
 } 

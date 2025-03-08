@@ -1,9 +1,6 @@
-# Beryl Thompson Website Clone
+# Beryl Thompson Website
 
-This repository contains a clone of the Beryl Thompson "Begin From Within" website. The clone replicates the main features and design of the original website.
-
-## Original Website
-[https://berylthompson.com/](https://berylthompson.com/)
+This repository the Beryl Thompson "Begin From Within" website.
 
 ## Features Implemented
 
@@ -18,7 +15,7 @@ This repository contains a clone of the Beryl Thompson "Begin From Within" websi
 
 - HTML5
 - CSS3
-- JavaScript (Vanilla JS, no frameworks)
+- JavaScript, Next.js 14, Tailwind CSS
 - Font Awesome for icons
 
 ## File Structure
@@ -34,7 +31,7 @@ This repository contains a clone of the Beryl Thompson "Begin From Within" websi
 
 ## Disclaimer
 
-This is a clone created for educational/demonstration purposes only. All content rights belong to the original website owner.
+All content rights belong to the original website owner.
 
 ## License
 
