@@ -1,0 +1,321 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+:root {
+  --primary-color: #9b8557;
+  --primary-dark: #7d6b46;
+  --primary-light: #b8a37e;
+  --secondary-color: #2a2a2a;
+  --background-color: #f8f8f8;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Enable smooth scrolling but respect user preferences for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-inter), sans-serif;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  max-width: 70ch; /* Improve readability by limiting line length */
+  text-align: center; /* Center the text */
+  margin-left: auto; /* Help center the paragraph element itself */
+  margin-right: auto; /* Help center the paragraph element itself */
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+.btn {
+  @apply px-4 py-2 rounded-md font-medium transition-colors duration-300 inline-block text-center;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-lg;
+}
+
+.btn-sm {
+  @apply px-3 py-1.5 text-sm;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary-dark;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white hover:bg-gray-700;
+}
+
+.btn-outline {
+  @apply border-2 border-white text-white hover:bg-white/20 transition-all px-6 py-3 rounded-md font-medium;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center;
+}
+
+.nav-link {
+  @apply text-secondary hover:text-primary transition-colors duration-300 font-medium;
+}
+
+.active-nav-link {
+  @apply text-primary font-semibold;
+  position: relative;
+}
+
+.active-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+/* For screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only.focus-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Hero section specific styles */
+.hero-text {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.05em;
+  transform-style: preserve-3d;
+}
+
+/* Background gradient animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+/* Bounce animation for scroll indicator */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+/* Animation for CTA button */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(155, 133, 87, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(155, 133, 87, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(155, 133, 87, 0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* Parallax and inward journey effects */
+@keyframes floatIn {
+  0% {
+    transform: translateZ(-100px) scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes depthPulse {
+  0% {
+    transform: translateZ(0px);
+  }
+  50% {
+    transform: translateZ(20px);
+  }
+  100% {
+    transform: translateZ(0px);
+  }
+}
+
+@keyframes circleExpand {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.parallax-container {
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.depth-1 {
+  transform: translateZ(-10px) scale(1.1);
+}
+
+.depth-2 {
+  transform: translateZ(-30px) scale(1.3);
+}
+
+.depth-3 {
+  transform: translateZ(-60px) scale(1.6);
+}
+
+.animate-float-in {
+  animation: floatIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-depth-pulse {
+  animation: depthPulse 6s ease-in-out infinite;
+}
+
+.animate-circle-expand {
+  animation: circleExpand 3s ease-out infinite;
+}
+
+/* Portal effect */
+.portal-circle {
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary-light) 0%, var(--primary-color) 50%, var(--primary-dark) 100%);
+  box-shadow: 0 0 30px rgba(155, 133, 87, 0.6);
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Meditation circles animation */
+@keyframes meditationRipple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(155, 133, 87, 0.3),
+                0 0 0 10px rgba(155, 133, 87, 0.3),
+                0 0 0 30px rgba(155, 133, 87, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(155, 133, 87, 0.3),
+                0 0 0 30px rgba(155, 133, 87, 0.3),
+                0 0 0 60px rgba(155, 133, 87, 0);
+  }
+}
+
+.meditation-ripple {
+  animation: meditationRipple 4s infinite ease-out;
+} 
