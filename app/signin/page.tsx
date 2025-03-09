@@ -53,7 +53,11 @@ export default function SignIn() {
     try {
       setGoogleLoading(true);
       setError('');
-      await signIn('google', { callbackUrl: '/' });
+      const callbackUrl = new URL('/', window.location.origin).toString();
+      await signIn('google', { 
+        callbackUrl: callbackUrl,
+        redirect: true
+      });
     } catch (err) {
       console.error('Google sign-in error:', err);
       setError('Failed to sign in with Google. Please try again.');

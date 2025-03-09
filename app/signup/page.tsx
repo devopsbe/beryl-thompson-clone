@@ -100,7 +100,12 @@ export default function SignUp() {
     try {
       setGoogleLoading(true);
       setError('');
-      await signIn('google', { callbackUrl: '/' });
+      // Use the absolute URL to avoid 404 issues
+      const callbackUrl = new URL('/', window.location.origin).toString();
+      await signIn('google', { 
+        callbackUrl: callbackUrl,
+        redirect: true
+      });
     } catch (err) {
       console.error('Google sign-up error:', err);
       setError('Failed to sign up with Google. Please try again.');

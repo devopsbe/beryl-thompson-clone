@@ -61,11 +61,13 @@ const handler = NextAuth({
       if (account?.provider === "google") {
         try {
           await connectToDB();
+          console.log("Google sign-in attempt for:", user.email);
           
           // Check if user already exists
           const existingUser = await User.findOne({ email: user.email });
           
           if (existingUser) {
+            console.log("Existing user found:", existingUser.email);
             // Update the existing user's Google account info
             existingUser.name = user.name || existingUser.name;
             existingUser.image = user.image || existingUser.image;
@@ -87,7 +89,9 @@ const handler = NextAuth({
             }
             
             await existingUser.save();
+            console.log("User updated successfully");
           } else {
+            console.log("Creating new user for:", user.email);
             // Create a new user
             await User.create({
               name: user.name,
@@ -102,6 +106,7 @@ const handler = NextAuth({
                 },
               ],
             });
+            console.log("New user created successfully");
           }
         } catch (error) {
           console.error("Google sign-in error:", error);
@@ -125,11 +130,24 @@ const handler = NextAuth({
         session.user.image = token.picture || null;
       }
       return session;
+    },
+    async redirect({ url, baseUrl }) {
+      // Ensure we redirect to a valid URL in our application
+      console.log("Redirect callback called with URL:", url, "and baseURL:", baseUrl);
+      
+      // If the URL is relative or matches our base URL, allow it
+      if (url.startsWith('/') || url.startsWith(baseUrl)) {
+        return url;
+      }
+      
+      // Default to home page
+      return baseUrl;
     }
   },
   session: {
     strategy: "jwt",
   },
+  debug: process.env.NODE_ENV === "development",
   secret: process.env.NEXTAUTH_SECRET || "your-secret-key",
   pages: {
     signIn: "/signin",

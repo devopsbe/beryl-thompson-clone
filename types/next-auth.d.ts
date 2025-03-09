@@ -10,12 +10,16 @@ declare module 'next-auth' {
       id: string;
       /** User's role */
       role?: 'user' | 'admin';
+      /** User's profile image */
+      image?: string | null;
     } & DefaultSession['user'];
   }
 
   interface User {
     /** User's role */
     role?: 'user' | 'admin';
+    /** User's profile image */
+    image?: string;
   }
 }
 
@@ -26,5 +30,7 @@ declare module 'next-auth/jwt' {
     id: string;
     /** User's role */
     role?: 'user' | 'admin';
+    /** User's profile image */
+    picture?: string;
   }
 } 
