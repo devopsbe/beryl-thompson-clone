@@ -6,6 +6,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/theme/ThemeProvider';
 import dynamic from 'next/dynamic';
+import { SessionProvider } from '@/components/auth/SessionProvider';
 
 // Dynamically import InfoBox with no SSR
 const InfoBox = dynamic(() => import('@/components/InfoBox'), { ssr: false });
@@ -58,19 +59,21 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body className="flex flex-col min-h-screen bg-background dark:bg-background-dark text-secondary dark:text-white transition-colors duration-300" suppressHydrationWarning>
-        <ThemeProvider>
-          {/* Skip to content link for accessibility */}
-          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-primary focus:text-white focus:z-50">
-            Skip to content
-          </a>
-          <Header />
-          <main id="main-content" className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-          {/* Floating Info Box */}
-          <InfoBox />
-        </ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider>
+            {/* Skip to content link for accessibility */}
+            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:p-4 focus:bg-primary focus:text-white focus:z-50">
+              Skip to content
+            </a>
+            <Header />
+            <main id="main-content" className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+            {/* Floating Info Box */}
+            <InfoBox />
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );
