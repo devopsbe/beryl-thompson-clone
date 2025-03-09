@@ -17,4 +17,14 @@ declare module 'next-auth' {
     /** User's role */
     role?: 'user' | 'admin';
   }
+}
+
+declare module 'next-auth/jwt' {
+  /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
+  interface JWT {
+    /** User's ID */
+    id: string;
+    /** User's role */
+    role?: 'user' | 'admin';
+  }
 } 
