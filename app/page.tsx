@@ -5,6 +5,9 @@ import dynamic from 'next/dynamic';
 // Dynamically import the ParallaxEffect component with no SSR
 const ParallaxEffect = dynamic(() => import('../components/ParallaxEffect'), { ssr: false });
 
+// Dynamically import the CountdownTimer component with no SSR
+const CountdownTimer = dynamic(() => import('../components/CountdownTimer'), { ssr: false });
+
 // Client Component for Hero Section
 const HeroSection = () => {
   return (
@@ -111,19 +114,8 @@ export default function Home() {
             Through regular guidance that reflects back to the Self and then practice, each student is actually practicing living through the heart center. Since the process is a return to the original Self, practice causes you to remember yourSelf and you realize that the new "habit" really isn't new. Since 1994, this process has worked for 100% of those who apply it.
           </p>
           
-          {/* New Call to Action for Our New Features */}
-          <div className="mt-10 grid md:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-background-darkAlt p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-              <div className="text-4xl text-primary dark:text-primary-light mb-4">
-                <i className="fas fa-book"></i>
-              </div>
-              <h3 className="text-xl mb-2 text-secondary dark:text-white">Serialized Book</h3>
-              <p className="mb-4 text-secondary-light dark:text-gray-300">Follow our chapter-by-chapter book release this summer.</p>
-              <Link href="/book" className="btn btn-primary inline-block">
-                Learn More
-              </Link>
-            </div>
-            
+          {/* Call to Action for Classes and Appointments */}
+          <div className="mt-10 grid md:grid-cols-2 gap-8">
             <div className="bg-white dark:bg-background-darkAlt p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
               <div className="text-4xl text-primary dark:text-primary-light mb-4">
                 <i className="fas fa-graduation-cap"></i>
@@ -149,12 +141,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Serialized Book Section */}
       <section className="py-12 bg-white dark:bg-background-darkAlt transition-colors duration-300">
         <div className="container-custom max-w-4xl">
-          <h4 className="text-2xl mb-4 text-secondary dark:text-white">CONTACT</h4>
-          <p className="text-secondary-light dark:text-gray-300">BeginFromWithin@msn.com</p>
-          <p className="text-secondary-light dark:text-gray-300">520.403.8210</p>
+          <h4 className="text-2xl mb-4 text-secondary dark:text-white">SERIALIZED BOOK</h4>
+          <p className="text-secondary-light dark:text-gray-300">
+            Something special is on the horizon. Stay tuned for our upcoming journey of self-discovery.
+          </p>
+          
+          <div className="mt-8 bg-gradient-to-r from-primary/5 to-primary/15 p-8 rounded-lg shadow-md relative overflow-hidden">
+            {/* Coming Soon Overlay */}
+            <div className="absolute top-0 right-0 bg-primary text-white px-4 py-2 rounded-bl-lg font-bold transform rotate-0 shadow-md z-10">
+              COMING SOON
+            </div>
+            
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="w-full md:w-1/3">
+                <div className="relative h-64 w-full shadow-lg">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                    <div className="book-container">
+                      <div className="book">
+                        <div className="book-cover">
+                          <div className="book-spine"></div>
+                          <div className="book-title">
+                            <h3 className="text-lg text-white font-bold">Journey to the Self</h3>
+                            <p className="text-sm text-white/80">By Beryl Thompson</p>
+                          </div>
+                        </div>
+                        <div className="book-pages"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="w-full md:w-2/3 space-y-4">
+                <h3 className="text-xl font-bold text-secondary dark:text-white">A Journey to the Self</h3>
+                <p className="text-secondary-light dark:text-gray-300">
+                  A transformative exploration of self-discovery awaits you. Our serialized book will guide you through the process of connecting with your authentic self.
+                </p>
+                <div className="mt-6">
+                  {/* Countdown Timer */}
+                  <CountdownTimer targetDate={new Date(new Date().getFullYear(), 5, 22)} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
