@@ -15,11 +15,6 @@ export default function BookPage() {
         </p>
         
         <div className="bg-gradient-to-r from-primary/5 to-primary/15 p-8 rounded-lg shadow-md mb-12 relative overflow-hidden">
-          {/* Coming Soon Overlay */}
-          <div className="absolute top-0 right-0 bg-primary text-white px-4 py-2 rounded-bl-lg font-bold transform rotate-0 shadow-md z-10">
-            COMING SOON
-          </div>
-
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="w-full md:w-1/3">
               <div className="relative h-64 w-full shadow-lg">
@@ -38,14 +33,14 @@ export default function BookPage() {
                   </div>
                 </div>
               </div>
-            </div>
-            
+          </div>
+          
             <div className="w-full md:w-2/3 space-y-4">
-              <h2 className="text-2xl mb-4 text-secondary dark:text-white">Begin From Within: The Journey to the Self</h2>
+          <h2 className="text-2xl mb-4 text-secondary dark:text-white">Begin From Within: The Journey to the Self</h2>
               <p className="mb-4 text-secondary-light dark:text-gray-300">
-                A comprehensive guide to shifting the energy of your experiences from discord to harmony through trusting what you hear when you listen.
-              </p>
-              
+            A comprehensive guide to shifting the energy of your experiences from discord to harmony through trusting what you hear when you listen.
+          </p>
+          
               <div className="mt-6">
                 {/* Countdown Timer */}
                 <CountdownTimer targetDate={new Date(new Date().getFullYear(), 5, 22)} />
@@ -65,36 +60,6 @@ export default function BookPage() {
                   <p className="text-gray-600 dark:text-gray-400">June 22, 2025</p>
                 </div>
                 <span className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">First Release</span>
-              </div>
-            </div>
-            
-            <div className="py-4">
-              <div className="flex justify-between items-center">
-                <div>
-                  <h4 className="text-lg font-medium text-secondary dark:text-white">Chapter 2: The Head and Heart</h4>
-                  <p className="text-gray-600 dark:text-gray-400">July 6, 2025</p>
-                </div>
-                <span className="text-gray-500 dark:text-gray-400">Coming Soon</span>
-              </div>
-            </div>
-            
-            <div className="py-4">
-              <div className="flex justify-between items-center">
-                <div>
-                  <h4 className="text-lg font-medium text-secondary dark:text-white">Chapter 3: Listening Inward</h4>
-                  <p className="text-gray-600 dark:text-gray-400">July 20, 2025</p>
-                </div>
-                <span className="text-gray-500 dark:text-gray-400">Coming Soon</span>
-              </div>
-            </div>
-            
-            <div className="py-4">
-              <div className="flex justify-between items-center">
-                <div>
-                  <h4 className="text-lg font-medium text-secondary dark:text-white">Chapter 4: Shifting Energy</h4>
-                  <p className="text-gray-600 dark:text-gray-400">August 3, 2025</p>
-                </div>
-                <span className="text-gray-500 dark:text-gray-400">Coming Soon</span>
               </div>
             </div>
           </div>
