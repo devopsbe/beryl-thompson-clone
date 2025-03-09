@@ -1,0 +1,586 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+:root {
+  --primary-color: #9b8557;
+  --primary-dark: #7d6b46;
+  --primary-light: #b8a37e;
+  --secondary-color: #2a2a2a;
+  --background-color: #f8f8f8;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Enable smooth scrolling but respect user preferences for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background-color: var(--background-color);
+  color: var(--secondary-color);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-inter), sans-serif;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  max-width: 70ch; /* Improve readability by limiting line length */
+  text-align: center; /* Center the text */
+  margin-left: auto; /* Help center the paragraph element itself */
+  margin-right: auto; /* Help center the paragraph element itself */
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+.btn {
+  @apply px-4 py-2 rounded-md font-medium transition-colors duration-300 inline-block text-center;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-lg;
+}
+
+.btn-sm {
+  @apply px-3 py-1.5 text-sm;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary-dark;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white hover:bg-gray-700;
+}
+
+.btn-outline {
+  @apply border-2 border-white text-white hover:bg-white/20 transition-all px-6 py-3 rounded-md font-medium;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center;
+}
+
+.nav-link {
+  @apply text-secondary hover:text-primary transition-colors duration-300 font-medium;
+}
+
+.active-nav-link {
+  @apply text-primary font-semibold;
+  position: relative;
+}
+
+.active-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+/* For screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only.focus-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Hero section specific styles */
+.hero-text {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.05em;
+  transform-style: preserve-3d;
+}
+
+/* Background gradient animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+/* Bounce animation for scroll indicator */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}
+
+/* Animation for CTA button */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(155, 133, 87, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(155, 133, 87, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(155, 133, 87, 0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* Parallax and inward journey effects */
+@keyframes floatIn {
+  0% {
+    transform: translateZ(-100px) scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: translateZ(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes depthPulse {
+  0% {
+    transform: translateZ(0px);
+  }
+  50% {
+    transform: translateZ(20px);
+  }
+  100% {
+    transform: translateZ(0px);
+  }
+}
+
+@keyframes circleExpand {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+.parallax-container {
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.depth-1 {
+  transform: translateZ(-10px) scale(1.1);
+}
+
+.depth-2 {
+  transform: translateZ(-30px) scale(1.3);
+}
+
+.depth-3 {
+  transform: translateZ(-60px) scale(1.6);
+}
+
+.animate-float-in {
+  animation: floatIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-depth-pulse {
+  animation: depthPulse 6s ease-in-out infinite;
+}
+
+.animate-circle-expand {
+  animation: circleExpand 3s ease-out infinite;
+}
+
+/* Portal effect */
+.portal-circle {
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary-light) 0%, var(--primary-color) 50%, var(--primary-dark) 100%);
+  box-shadow: 0 0 30px rgba(155, 133, 87, 0.6);
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Meditation circles animation */
+@keyframes meditationRipple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(155, 133, 87, 0.3),
+                0 0 0 10px rgba(155, 133, 87, 0.3),
+                0 0 0 30px rgba(155, 133, 87, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(155, 133, 87, 0.3),
+                0 0 0 30px rgba(155, 133, 87, 0.3),
+                0 0 0 60px rgba(155, 133, 87, 0);
+  }
+}
+
+.meditation-ripple {
+  animation: meditationRipple 4s infinite ease-out;
+}
+
+/* Journey Deeper Parallax Effects */
+.journey-depth-element {
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(1px); /* Add slight blur to make elements more ethereal */
+}
+
+.journey-section {
+  transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+  opacity: 0.95; /* Increased from 0.85 to ensure text is more readable */
+}
+
+.journey-section:hover {
+  opacity: 1;
+}
+
+@keyframes floatDeeper {
+  0% {
+    transform: translateY(10px); /* Reduced from 20px to 10px for subtler animation */
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.float-deeper {
+  animation: floatDeeper 1.2s ease-out forwards;
+  animation-delay: calc(var(--index) * 0.15s); /* Reduced from 0.2s to 0.15s */
+}
+
+/* Depth illusion effect - elements appear to move as if getting deeper within */
+@keyframes depthReveal {
+  0% {
+    transform: scale(0.9); /* Increased from 0.85 to 0.9 for subtler animation */
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.depth-reveal {
+  animation: depthReveal 1.2s ease-out forwards;
+}
+
+/* Text shadow for improved readability with parallax effects */
+.text-shadow {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.dark .text-shadow {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Swirling background effects */
+@keyframes swirl {
+  0% {
+    transform: rotate(0deg) translateX(20px) rotate(0deg) scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: rotate(180deg) translateX(20px) rotate(-180deg) scale(1.1);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: rotate(360deg) translateX(20px) rotate(-360deg) scale(1);
+    filter: brightness(1);
+  }
+}
+
+.swirl-particle {
+  animation: swirl 12s infinite linear;
+  transform-origin: center center;
+  filter: blur(0px) drop-shadow(0 0 5px rgba(155, 133, 87, 0.8));
+}
+
+/* Content sections should have a subtle background to ensure readability */
+.journey-section .prose {
+  position: relative;
+  z-index: 10;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* For users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .swirl-particle {
+    animation: none;
+  }
+  
+  .journey-depth-element,
+  .journey-section {
+    transition: none !important;
+  }
+}
+
+/* Book styles for the coming soon section */
+.book-container {
+  perspective: 1000px;
+  width: 200px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 150px;
+  height: 220px;
+  transform: rotateY(-30deg);
+  transition: transform 0.5s ease;
+}
+
+.book:hover {
+  transform: rotateY(-15deg);
+}
+
+.book-cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  border-radius: 2px 10px 10px 2px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: left;
+  transition: transform 0.5s ease;
+  overflow: hidden;
+}
+
+.book-cover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('/pattern.png');
+  background-size: 200px;
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+}
+
+.book-spine {
+  position: absolute;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+  top: 0;
+  left: -10px;
+  transform: rotateY(-90deg) translateX(-10px);
+  transform-origin: left;
+}
+
+.book-title {
+  padding: 20px;
+  text-align: center;
+  z-index: 1;
+  max-width: 90%;
+}
+
+.book-pages {
+  position: absolute;
+  width: 97%;
+  height: 97%;
+  top: 1.5%;
+  right: 1.5%;
+  background-color: white;
+  border-radius: 0 7px 7px 0;
+  transform: translateZ(-3px);
+  z-index: -1;
+}
+
+@keyframes bookGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px 2px rgba(155, 133, 87, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(155, 133, 87, 0.4);
+  }
+}
+
+.book-cover {
+  animation: bookGlow 3s infinite ease-in-out;
+}
+
+/* Countdown timer styles */
+.countdown-container {
+  width: 100%;
+}
+
+.countdown-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 3.5rem;
+}
+
+/* Progress bar styles */
+@keyframes progressPulse {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progress-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 30%;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0)
+  );
+  animation: progressPulse 2.5s ease-in-out infinite;
+  pointer-events: none; /* Ensures the shine doesn't interfere with clicks */
+}
+
+/* Typing animation for chatbot */
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  animation: typingAnimation 1.4s infinite ease-in-out both;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingAnimation {
+  0%, 80%, 100% { 
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+  40% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+} 
