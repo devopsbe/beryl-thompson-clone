@@ -1,32 +1,50 @@
-// Instructions for updating Vercel environment variables
-console.log(`
-=== VERCEL ENVIRONMENT VARIABLES SETUP ===
+// Script to update environment variables in Vercel
+// Usage: node update-vercel-env.js
 
-Run the following commands to set up your environment variables in Vercel:
+require('dotenv').config({ path: '.env.local' });
+const { execSync } = require('child_process');
 
-1. MongoDB URI:
-   npx vercel env add MONGODB_URI
-   Value: your_mongodb_connection_string
+// Check if Vercel CLI is installed
+try {
+  execSync('vercel --version', { stdio: 'ignore' });
+} catch (error) {
+  console.error('Vercel CLI is not installed. Please install it with: npm i -g vercel');
+  process.exit(1);
+}
 
-2. NextAuth Secret:
-   npx vercel env add NEXTAUTH_SECRET
-   Value: your_nextauth_secret
+// Environment variables to update
+const envVars = [
+  'MONGODB_URI',
+  'NEXTAUTH_SECRET',
+  'NEXTAUTH_URL',
+  'GOOGLE_CLIENT_ID',
+  'GOOGLE_CLIENT_SECRET',
+  'EMAIL_SERVER_HOST',
+  'EMAIL_SERVER_PORT',
+  'EMAIL_SERVER_USER',
+  'EMAIL_SERVER_PASSWORD',
+  'EMAIL_FROM'
+];
 
-3. NextAuth URL:
-   npx vercel env add NEXTAUTH_URL
-   Value: https://beryl-thompson.vercel.app
+console.log('Updating Vercel environment variables...');
 
-4. Google Client ID:
-   npx vercel env add GOOGLE_CLIENT_ID
-   Value: your_google_client_id
+// Update each environment variable
+envVars.forEach(varName => {
+  const value = process.env[varName];
+  
+  if (!value) {
+    console.warn(`Warning: ${varName} is not defined in .env.local`);
+    return;
+  }
+  
+  try {
+    // Add the environment variable to Vercel
+    execSync(`vercel env add ${varName}`, { stdio: 'inherit' });
+  } catch (error) {
+    console.error(`Error updating ${varName}: ${error.message}`);
+  }
+});
 
-5. Google Client Secret:
-   npx vercel env add GOOGLE_CLIENT_SECRET
-   Value: your_google_client_secret
-
-After setting these variables, redeploy your application:
-   npx vercel --prod
-
-Remember to update your Google OAuth settings to include:
-https://beryl-thompson.vercel.app/api/auth/callback/google
-`); 
+console.log('Environment variables update complete!');
+console.log('Note: You may need to redeploy your application for changes to take effect.');
+console.log('Run: vercel --prod'); 
